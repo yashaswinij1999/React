@@ -1,0 +1,17 @@
+.head {
+  display: inline-block;
+}
+
+.die {
+  display: inline-block;
+  width: 70px;
+  height: 60px;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bolder;
+  font-size: xx-large;
+  border-radius: 10px;
+  color: white;
+}
