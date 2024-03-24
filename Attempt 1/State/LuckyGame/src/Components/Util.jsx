@@ -10,4 +10,14 @@ function sum(num) {
   return num.reduce((prev, cur) => prev + cur, 0);
 }
 
-export { getRoll, sum };
+function isEqual(dice) {
+  return dice.every((el) => el === dice[0]);
+}
+
+function lessThan4(dice) {
+  return sum(dice) < 4;
+}
+
+export { getRoll };
+export { isEqual };
+export { lessThan4 };
