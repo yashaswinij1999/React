@@ -8,8 +8,8 @@ function Pokecard() {
     `.png`;
   return (
     <div className="main">
-      <h1>Pokemon #{random}</h1>
-      <img src={url} alt="pokemon"></img>
+      <h1 className="heading">Pokemon #{random}</h1>
+      <img className="img" src={url} alt="pokemon"></img>
     </div>
   );
 }

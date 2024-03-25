@@ -1,3 +1,12 @@
 .main {
-  border: 1px solid;
+  border: 2px solid;
+  padding: 20px;
+}
+
+.img {
+  width: 150px;
+}
+
+.heading {
+  color: blue;
 }
