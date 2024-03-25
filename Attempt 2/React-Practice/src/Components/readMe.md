@@ -1,6 +1,6 @@
 # React Excercises
 ---
-## Die Component
+**Die Component**
 ```
  - Create a function called Die.
  - generate a random number.
