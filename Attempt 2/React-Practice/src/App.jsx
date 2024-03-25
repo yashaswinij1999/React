@@ -4,12 +4,12 @@ import viteLogo from "/vite.svg";
 import "./App.css";
 import Die from "./Components/Die";
 import DiceRoll from "./DiceRoll";
+import Pokecard from "./Components/Pokecard";
 
 function App() {
   return (
     <>
-      <DiceRoll />
-      <DiceRoll />
+      <Pokecard />
     </>
   );
 }
