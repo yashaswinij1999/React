@@ -1,7 +1,7 @@
 import React from "react";
 
 function Pokecard() {
-  return <div>Pokecard</div>;
+  const random = Math.floor(Math.random() * 150) + 1;
 }
 
 export default Pokecard;
