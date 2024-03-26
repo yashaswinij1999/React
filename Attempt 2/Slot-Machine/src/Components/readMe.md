@@ -8,4 +8,5 @@ The main objective is to learn vet,props and JSX.
 
 ### Steps
 
-1.**React Setup**
+- Design a component called slots, which expects 3 values.
+- The component should check if all the values are same.
