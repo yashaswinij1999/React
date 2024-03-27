@@ -1,5 +1,6 @@
 .list {
-  border: 1px solid;
   width: 1300px;
   height: 250px;
+  padding: 10px;
+  display: flex;
 }

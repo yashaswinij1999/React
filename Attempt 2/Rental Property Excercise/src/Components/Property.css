@@ -1,0 +1,7 @@
+.items {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  margin: 10px;
+  text-align: center;
+}
