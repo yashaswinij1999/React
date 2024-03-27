@@ -31,3 +31,12 @@ const properties = [
 ];
 ```
 
+### Components
+
+- The PropertyList component renders the list of properties based on the provided data.
+- Each property is displayed using the Property component, which formats and presents the property details.
+
+**Style**
+
+- The PropertyList component uses Flexbox to ensure that properties are displayed in a row for easy viewing.
+- Property component uses flex to align all items.
