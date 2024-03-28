@@ -7,7 +7,11 @@ import ButtonClicker from "./Components/ButtonClicker";
 function App() {
   return (
     <>
-      <ButtonClicker />
+      <ButtonClicker message={"hai"} buttonText={"click Me"} />
+      <ButtonClicker
+        message={"Please Dont click Me"}
+        buttonText={"Please Dont"}
+      />
     </>
   );
 }

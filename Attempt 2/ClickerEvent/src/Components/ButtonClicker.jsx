@@ -1,18 +1,13 @@
 import React from "react";
 
-function ButtonClicker() {
+function ButtonClicker({ message, buttonText }) {
   function ClickMe() {
-    alert("Thanks for clicking");
-  }
-
-  function dontClick() {
-    alert("Please dont click");
+    alert(message);
   }
 
   return (
     <>
-      <button onClick={ClickMe}>Click Me</button>
-      <button onClick={dontClick}>Don't Click</button>
+      <button onClick={ClickMe}>{buttonText}</button>
     </>
   );
 }
