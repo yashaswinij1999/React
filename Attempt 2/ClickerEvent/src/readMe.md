@@ -4,14 +4,62 @@
 
 The Clicker component is a simple React component designed for practicing props and handling events. It renders a button with customizable text and triggers an alert message when clicked.
 
-The Objective of this excercise is to attach event handlers to the elements.
+## Usage
 
-## Instructions
+To use the Clicker component, follow these steps:
 
-- Setup React using Preferred Method in Project Directory.
-- Remove unnecessary code in `App.jsx` file.
-- Create a `EventClicker` component and it should render a button.
-- Pass message and buttontext as a prop to `EventClicker` excercise.
-- Add event handler to the button.
-- Button should be displayed with button text name.
-- The button when clicked should display the message.
+1.  **Install Dependencies:**
+
+    - Ensure you have React installed in your project.
+
+2.  **Create Clicker Component:**
+
+    - Create a new file named Clicker.jsx and define the Clicker component as follow:
+
+      ```
+      import React from 'react';
+
+      export default function Clicker({ buttonText, message }) {
+
+        const handleClick = () => {
+         alert(message);
+        };
+
+        return (
+          <button onClick={handleClick}>
+          {buttonText}
+          </button>
+        );
+      }
+      ```
+
+3.  **Usage Example**
+
+    - Use the Clicker component in your application by importing it and passing the required props:
+
+      ```
+      import React from 'react';
+      import Clicker from './Clicker';
+
+      function App() {
+        return (
+            <div>
+              <Clicker buttonText="Click Me" message="Hi" />
+              {/* Uncomment below to test another Clicker */}
+              {/* <Clicker buttonText="Do Not Click" message="Please Stop Clicking Me" /> */}
+            </div>
+            );
+        }
+
+        export default App;
+
+      ```
+
+4.  **Props**
+
+    - **buttonText:** Specifies the text to be displayed on the button.
+    - **message:** Specifies the message to be alerted when the button is clicked.
+
+5.  **Examples**
+    - **Example 1:** Renders a button with the text "Click Me" and alerts "Hi" when clicked.
+    - **Example 2:** Renders a button with the text "Do Not Click" and alerts "Please Stop Clicking Me" when clicked.
