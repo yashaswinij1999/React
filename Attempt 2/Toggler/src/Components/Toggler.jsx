@@ -1,10 +1,9 @@
+import { useState } from "react";
+
 export default function Toggler() {
+  const [emoji, setEmoji] = useState;
 
-
-    
-    function toggle(){
-
-    }
+  function toggle() {}
 
   return (
     <>
