@@ -1,7 +1,14 @@
 export default function Toggler() {
+
+
+    
+    function toggle(){
+
+    }
+
   return (
     <>
-      <div>😄</div>
+      <h1 onClick={toggle}>😃</h1>
     </>
   );
 }
