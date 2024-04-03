@@ -2,6 +2,7 @@ import React, { CSSProperties, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { Layout } from "antd";
 import { Content, Header } from "antd/es/layout/layout";
+import TodoInputForm from "./TodoInputForm";
 
 const layout: CSSProperties = {
   width: "100%",
@@ -78,6 +79,7 @@ const TodoApp: React.FC = () => {
       <Layout style={layout}>
         <Header style={header}> Todo V1</Header>
         <Content style={content}></Content>
+        <TodoInputForm addTodo={addTodo} />
       </Layout>
     </>
   );
