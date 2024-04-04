@@ -1,17 +1,18 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import ShoppingCartList from "./ShoppingCartList";
 import { v4 as uuidv4 } from "uuid";
 
 export default function ShoppingCart() {
   const initialValues = [
     {
-      id: 0,
+      id: uuidv4(),
       product: "",
       qty: 0,
     },
   ];
 
   const [data, setData] = useState(initialValues);
+  const inputRef = useRef(null);
 
   const handleChange = function (e) {
     let name = e.target.name;
@@ -21,10 +22,18 @@ export default function ShoppingCart() {
     setData(newData);
   };
 
+  const handleSubmission = function () {
+    reset();
+  };
+
+  function reset() {
+    setData(initialValues);
+  }
+
   return (
     <>
       <h1>Shopping Cart</h1>
-      <form>
+      <form onSubmit={handleSubmission}>
         <label htmlFor="product">
           <b>Product : </b>
         </label>
@@ -46,7 +55,8 @@ export default function ShoppingCart() {
           value={data.qty}
           onChange={handleChange}
         />
-        <button>Submit</button>
+        <button type="submit">Submit</button>
+        <ShoppingCartList data={data} />
       </form>
     </>
   );

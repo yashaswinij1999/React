@@ -1,8 +1,13 @@
-export default function ShoppingCartList(props) {
-  const { id, product, qty } = props;
-  console.log(id, product, qty);
-
-  console.log(product);
-
-  return <></>;
+export default function ShoppingCartList({ data }) {
+  return (
+    <>
+      {data.map((el) => (
+        <ul key={el.id}>
+          <li>
+            {el.product} {el.qty}
+          </li>
+        </ul>
+      ))}
+    </>
+  );
 }
