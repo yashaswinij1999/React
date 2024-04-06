@@ -1,11 +1,9 @@
 import { useRef, useState } from "react";
-import ShoppingCartList from "./ShoppingCartList";
-import { v4 as uuidv4 } from "uuid";
+import { validate } from "uuid";
 
-export default function ShoppingCart() {
+export default function ShoppingListForm({ addItem }) {
   const initialValues = [
     {
-      id: uuidv4(),
       product: "",
       qty: 0,
     },
@@ -13,21 +11,39 @@ export default function ShoppingCart() {
 
   const [data, setData] = useState(initialValues);
   const inputRef = useRef(null);
+  const [isvalidproduct, setProduct] = useState(false);
 
   const handleChange = function (e) {
-    let name = e.target.name;
-    let value = e.target.value;
-    console.log(name, value);
-    const newData = [{ ...data, [name]: value, id: uuidv4() }];
-    setData(newData);
+    if (e.target.name === "product") {
+      validate(e.target.value);
+    }
+
+    const { name, value } = e.target;
+    setData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
   };
 
-  const handleSubmission = function () {
+  const handleSubmission = function (e) {
+    e.preventDefault();
+    console.log("submitted");
+    addItem(data);
     reset();
+    inputRef.current.focus();
+  };
+
+  const validate = (product) => {
+    if (product.length === 0) {
+      setProduct(false);
+    } else {
+      setProduct(true);
+    }
   };
 
   function reset() {
-    setData(initialValues);
+    setData({ product: "", qty: 0 });
+    setProduct(false);
   }
 
   return (
@@ -43,7 +59,9 @@ export default function ShoppingCart() {
           type="text"
           value={data.product}
           onChange={handleChange}
+          ref={inputRef}
         />
+        {!isvalidproduct && <span style={{ color: "red" }}> required </span>}
         <label htmlFor="qty">
           {" "}
           <b> Quantity :</b>{" "}
@@ -55,8 +73,9 @@ export default function ShoppingCart() {
           value={data.qty}
           onChange={handleChange}
         />
-        <button type="submit">Submit</button>
-        <ShoppingCartList data={data} />
+        <button type="submit" disabled={!isvalidproduct}>
+          Submit
+        </button>
       </form>
     </>
   );
