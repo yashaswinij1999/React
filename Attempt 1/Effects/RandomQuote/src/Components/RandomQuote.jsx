@@ -1,5 +1,7 @@
 import { Button } from "antd";
 import { useState } from "react";
+import { Typography } from "antd";
+const { Title } = Typography;
 const randomURL = "https://inspo-quotes-api.herokuapp.com/quotes/random";
 
 export default function RandomQuote() {
@@ -9,12 +11,12 @@ export default function RandomQuote() {
     const response = await fetch(randomURL);
     const responseJson = await response.json();
     const quote = responseJson.quote;
-    console.log(quote);
+    setQuote(quote);
   };
 
   return (
     <>
-    
+      <Title level={3}>{quote.text}</Title>
       <Button onClick={getQuote}>Click me!</Button>
     </>
   );
