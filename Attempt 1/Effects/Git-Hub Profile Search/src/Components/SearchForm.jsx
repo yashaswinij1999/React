@@ -28,7 +28,7 @@ export default function SearchForm({ searchUserName }) {
             value={name}
             onChange={handleChange}
           />
-          <button>search</button>
+          <button className="btn">search</button>
         </form>
       </div>
     </>

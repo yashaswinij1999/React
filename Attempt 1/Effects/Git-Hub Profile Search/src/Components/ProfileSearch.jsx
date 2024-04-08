@@ -6,7 +6,7 @@ const url = "https://api.github.com/users";
 
 export default function ProfileSearch() {
   const [userName, setUserName] = useState("colt");
-  const [profile, setProfile] = useState({ data: null });
+  const [profile, setProfile] = useState({});
 
   useEffect(() => {
     async function searchProfile() {
@@ -25,8 +25,8 @@ export default function ProfileSearch() {
   return (
     <>
       <SearchForm searchUserName={searchUserName} />
-      <h3>{profile.login}</h3>
       <img style={{ width: "300px" }} src={src} />
+      <h3>{profile.name}</h3>
     </>
   );
 }
