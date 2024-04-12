@@ -29,13 +29,20 @@ export default function Test({ data }) {
       localStorage.setItem(`${index}`, element);
       console.log(localStorage);
     });
-  });
+  }, [intialData]);
 
   return (
     <>
       <ul>
         {intialData.map((el, index) => (
-          <li key={index}>{el.task}</li>
+          <li
+            key={index}
+            onClick={() => {
+              deleteItem(index);
+            }}
+          >
+            {el.task}{" "}
+          </li>
         ))}
       </ul>
     </>
