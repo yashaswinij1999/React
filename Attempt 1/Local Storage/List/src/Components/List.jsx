@@ -1,43 +1,62 @@
-// import { useEffect, useState } from "react";
-// import "./List.css";
+import React, { useEffect, useState } from "react";
 
-// export default function List({ data }) {
-//   const [intialData, setData] = useState(() => {
-//     return data.map((el, index) => {
-//       const storedData = localStorage.getItem(`todo${index}`, el);
-//       return storedData ? JSON.parse(storedData) : "no items present";
-//     });
-//   });
+const initialData = [
+  {
+    id: 1,
+    task: "buy milk",
+  },
+  {
+    id: 2,
+    task: "study",
+  },
+  {
+    id: 3,
+    task: "help others in daily chores",
+  },
+  {
+    id: 4,
+    task: "buy groceries",
+  },
+];
 
-//   console.log(intialData);
+export default function TaskList() {
+  const [tasks, setTasks] = useState(() => {
+    const storedTasks =
+      JSON.parse(localStorage.getItem("tasks")) || initialData;
+    return storedTasks;
+  });
 
-//   useEffect(() => {
-//     data.forEach((element, index) => {
-//       localStorage.setItem(`todo${index}`, JSON.stringify(element));
-//     });
-//   }, [intialData]);
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks]);
 
-//   const handleChange = function (id) {
-//     setData((prevData) => {
-//       return prevData.filter((el) => el.id !== id);
-//     });
-//   };
+  const handleDelete = (id) => {
+    const updatedTasks = tasks.filter((task) => task.id !== id);
+    setTasks(updatedTasks);
+  };
 
-//   return (
-//     <>
-//       <h1>List</h1>
-//       <ul>
-//         {intialData.map((el, index) => (
-//           <li
-//             key={index}
-//             onClick={() => {
-//               handleChange(el.id);
-//             }}
-//           >
-//             {el.task}
-//           </li>
-//         ))}
-//       </ul>
-//     </>
-//   );
-// }
+  const handleChange = function () {
+    localStorage.setItem("tasks", JSON.stringify(initialData));
+    console.log(localStorage);
+    setTasks(initialData);
+  };
+
+  return (
+    <div>
+      <h1>Task List</h1>
+      {tasks.length > 0 ? (
+        <ul>
+          {tasks.map((task) => (
+            <li key={task.id}>
+              {task.task}{" "}
+              <button onClick={() => handleDelete(task.id)}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No tasks found.</p>
+      )}
+      <button onClick={handleChange}>Reset</button>
+    </div>
+  );
+}
