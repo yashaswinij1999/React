@@ -23,8 +23,8 @@ The Main objective of this excercise is to create statefull component using **us
 **Import useState**
 
 - import the _useState_ hook, to store the state.
-- Implement a function to modify the state, findly render it.
+- Implement a function to modify the state, finally render it.
 
 **Styling**
-- Style the component with using css properties.
 
+- Style the component with using css properties.
