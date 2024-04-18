@@ -5,9 +5,12 @@ export default function InputField() {
     <>
       <Card
         style={{
-          width: 300,
+          width: 250,
+          height: 300,
         }}
-      ></Card>
+      >
+        <LockOutlined />
+      </Card>
     </>
   );
 }
