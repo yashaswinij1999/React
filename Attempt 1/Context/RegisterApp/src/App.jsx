@@ -9,7 +9,9 @@ function App() {
   return (
     <>
       <NavBar />
-      <InputField />
+      <div className="page" style={{ width: "97.5vw", height: "90vh" }}>
+        <InputField />
+      </div>
     </>
   );
 }

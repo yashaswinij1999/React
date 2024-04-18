@@ -1,5 +1,4 @@
-.page {
-  margin-top: 60px;
+.card {
   display: flex;
   justify-content: center;
 }
