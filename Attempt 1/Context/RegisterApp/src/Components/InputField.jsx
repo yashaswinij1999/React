@@ -2,6 +2,7 @@ import { LockOutlined } from "@ant-design/icons";
 import { Card } from "antd";
 import "./InputField.css";
 import { Radio, Typography } from "antd";
+import { Button, Checkbox, Form, Input } from "antd";
 
 export default function InputField() {
   return (
