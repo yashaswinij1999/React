@@ -7,43 +7,60 @@ import {
   ListItemText,
 } from "@mui/material";
 
+import useToggle from "../Hooks/useToggle";
+import EditForm from "./EditForm";
+
 export default function TodoItem({
   id,
   task,
   completed,
   ToggleTodo,
   removeTodo,
+  editTodo,
 }) {
+  const [isEditing, toggleIsEditing] = useToggle(false);
+
   return (
-    <>
-      <ListItem key={id}>
-        <Checkbox
-          checked={completed}
-          tabIndex={-1}
-          onClick={() => {
-            ToggleTodo(id);
-            console.log(id);
-          }}
+    <ListItem>
+      {isEditing ? (
+        <EditForm
+          id={id}
+          task={task}
+          editTodo={editTodo}
+          toggleEditForm={toggleIsEditing}
         />
-        <ListItemText
-          style={{ textDecorationLine: completed ? "line-through" : "none" }}
-        >
-          {task}
-        </ListItemText>
-        <ListItemSecondaryAction>
-          <IconButton aria-label="edit">
-            <Edit />
-          </IconButton>
-          <IconButton
-            aria-label="delete"
+      ) : (
+        <>
+          <Checkbox
+            checked={completed}
+            tabIndex={-1}
             onClick={() => {
-              removeTodo(id);
+              ToggleTodo(id);
+              console.log(id);
+            }}
+          />
+          <ListItemText
+            style={{
+              textDecorationLine: completed ? "line-through" : "none",
             }}
           >
-            <Delete />
-          </IconButton>
-        </ListItemSecondaryAction>
-      </ListItem>
-    </>
+            {task}
+          </ListItemText>
+          <ListItemSecondaryAction>
+            <IconButton aria-label="edit" onClick={toggleIsEditing}>
+              <Edit />
+            </IconButton>
+            <IconButton
+              aria-label="delete"
+              onClick={() => {
+                removeTodo(id);
+              }}
+            >
+              <Delete />
+            </IconButton>
+          </ListItemSecondaryAction>
+        </>
+      )}
+    </ListItem>
   );
 }

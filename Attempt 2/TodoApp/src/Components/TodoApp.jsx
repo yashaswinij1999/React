@@ -40,6 +40,14 @@ export default function TodoApp() {
     setTodos(updatedTodo);
   }
 
+  function editTodo(id, newTodo) {
+    const editedTodo = todos.map((el) =>
+      el.id === id ? { ...el, task: newTodo } : el
+    );
+    console.log(editedTodo);
+    setTodos(editedTodo);
+  }
+
   return (
     <>
       <Paper
@@ -64,6 +72,7 @@ export default function TodoApp() {
               todos={todos}
               ToggleTodo={ToggleTodo}
               removeTodo={removeTodo}
+              editTodo={editTodo}
             />
           </Grid>
         </Grid>
