@@ -15,11 +15,12 @@ export default function TodoForm({ addTodo }) {
       <form onSubmit={handleSubmit}>
         <TextField
           id="standard-basic"
-          label="Standard"
+          label="add new todo"
           variant="standard"
           fullWidth
           value={value}
           onChange={handleChange}
+          style={{ marginBottom: "1rem" }}
         />
       </form>
     </>

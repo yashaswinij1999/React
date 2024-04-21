@@ -1,13 +1,22 @@
 import { List, ListItem, ListItemText, Paper } from "@mui/material";
 import TodoItem from "./TodoItem";
 
-export default function TodoList({ data }) {
+export default function TodoList({ todos, ToggleTodo, removeTodo }) {
   return (
     <>
       <Paper>
         <List>
-          {data.map((el) => (
-            <TodoItem id={el.id} task={el.task} completed={el.completed} />
+          {todos.map((el, i) => (
+            <>
+              <TodoItem
+                id={el.id}
+                task={el.task}
+                completed={el.completed}
+                key={el.id}
+                ToggleTodo={ToggleTodo}
+                removeTodo={removeTodo}
+              />
+            </>
           ))}
         </List>
       </Paper>
