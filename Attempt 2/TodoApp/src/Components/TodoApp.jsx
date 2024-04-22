@@ -3,6 +3,7 @@ import TodoList from "./TodoList";
 import { useEffect, useState } from "react";
 import TodoForm from "./TodoForm";
 import { v4 as uuidv4 } from "uuid";
+import useTodoState from "../Hooks/useTodoState";
 
 export default function TodoApp() {
   const data = [
@@ -19,39 +20,13 @@ export default function TodoApp() {
     },
   ];
 
-  const intialData = JSON.parse(localStorage.getItem("todos"));
-  const [todos, setTodos] = useState(intialData);
+  const intialData = JSON.parse(localStorage.getItem("todos") || data);
+  const { todos, addTodo, toggleTodo, removeTodo, editTodo } =
+    useTodoState(intialData);
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
   }, [todos]);
-
-  function addTodo(todo) {
-    const newTodo = [...todos, { id: uuidv4(), task: todo, completed: false }];
-    setTodos(newTodo);
-    console.log(todos);
-  }
-
-  function ToggleTodo(id) {
-    const toggle = todos.map((el) =>
-      el.id === id ? { ...el, completed: !el.completed } : el
-    );
-    console.log(toggle);
-    setTodos(toggle);
-  }
-
-  function removeTodo(id) {
-    const updatedTodo = todos.filter((el) => el.id !== id);
-    setTodos(updatedTodo);
-  }
-
-  function editTodo(id, newTodo) {
-    const editedTodo = todos.map((el) =>
-      el.id === id ? { ...el, task: newTodo } : el
-    );
-    console.log(editedTodo);
-    setTodos(editedTodo);
-  }
 
   return (
     <>
@@ -75,7 +50,7 @@ export default function TodoApp() {
             <TodoForm addTodo={addTodo} />
             <TodoList
               todos={todos}
-              ToggleTodo={ToggleTodo}
+              toggleTodo={toggleTodo}
               removeTodo={removeTodo}
               editTodo={editTodo}
             />

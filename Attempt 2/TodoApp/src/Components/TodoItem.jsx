@@ -14,7 +14,7 @@ export default function TodoItem({
   id,
   task,
   completed,
-  ToggleTodo,
+  toggleTodo,
   removeTodo,
   editTodo,
 }) {
@@ -35,7 +35,7 @@ export default function TodoItem({
             checked={completed}
             tabIndex={-1}
             onClick={() => {
-              ToggleTodo(id);
+              toggleTodo(id);
               console.log(id);
             }}
           />
