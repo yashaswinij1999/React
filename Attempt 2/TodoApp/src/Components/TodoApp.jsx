@@ -1,6 +1,6 @@
 import { AppBar, Grid, Paper, Toolbar, Typography } from "@mui/material";
 import TodoList from "./TodoList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import TodoForm from "./TodoForm";
 import { v4 as uuidv4 } from "uuid";
 
@@ -19,7 +19,12 @@ export default function TodoApp() {
     },
   ];
 
-  const [todos, setTodos] = useState(data);
+  const intialData = JSON.parse(localStorage.getItem("todos"));
+  const [todos, setTodos] = useState(intialData);
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   function addTodo(todo) {
     const newTodo = [...todos, { id: uuidv4(), task: todo, completed: false }];
