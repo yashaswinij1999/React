@@ -13,7 +13,7 @@ function List() {
   return (
     <>
       <InputFrom addValue={addValue} />
-      {data.map((el, index) => (``
+      {data.map((el, index) => (
         <li key={index}>
           {el.product} - {el.qty}
         </li>
