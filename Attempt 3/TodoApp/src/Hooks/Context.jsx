@@ -3,15 +3,25 @@ import { createContext, useReducer } from "react";
 export const reducer = (state, action) => {
   switch (action.type) {
     case "Add":
-      return [...state, { id: action.payload.id, task: action.payload.task }];
+      return [
+        ...state,
+        {
+          id: action.payload.id,
+          task: action.payload.task,
+          completed: action.payload.completed,
+        },
+      ];
+
+    case "delete":
+      return state.filter((el) => action.payload.id !== el.id);
     default:
       return state;
   }
 };
 
 const initialData = [
-  { id: 1, task: "buy milk" },
-  { id: 2, task: "study food" },
+  { id: 1, task: "buy milk", completed: true },
+  { id: 2, task: "study food", completed: false },
 ];
 
 export const stateContext = createContext();

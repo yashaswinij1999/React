@@ -10,7 +10,10 @@ function TodoForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch({ type: "Add", payload: { id: uuidv4(), task: inval } });
+    dispatch({
+      type: "Add",
+      payload: { id: uuidv4(), task: inval, completed: false },
+    });
     reset();
     inRef.current.focus();
   }
