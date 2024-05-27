@@ -1,23 +1,19 @@
 import React, { useState } from "react";
 
-function useForm() {
-  const [inval, setInval] = useState("");
+function useForm({ initialState }) {
+  const [state, setState] = useState(initialState);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    dispatch({
-      type: "Add",
-      payload: { id: uuidv4(), task: inval, completed: false },
-    });
+  function handleChange(e) {
+    preventDefault(e);
+    setState(e.target.value);
     reset();
-    inRef.current.focus();
   }
 
   function reset() {
-    setInval("");
+    setState("");
   }
 
-  return <div>useForm</div>;
+  return [state, handleChange, reset];
 }
 
 export default useForm;

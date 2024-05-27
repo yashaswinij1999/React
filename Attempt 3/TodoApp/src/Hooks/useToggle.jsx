@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 
 function useToggle({ initialValue }) {
-  const [toggle, setToggle] = useState(initialValue);
+  const [state, setState] = useState(initialValue);
 
-  function handleToggle() {
-    setToggle(!toggle);
+  function handleState() {
+    console.log(state);
+    setState(!state);
   }
 
-  return [toggle, handleToggle];
+  return [state, handleState];
 }
 
 export default useToggle;

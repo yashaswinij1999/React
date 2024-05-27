@@ -1,59 +1,39 @@
-import React, { useContext, useState } from "react";
-import { stateContext } from "../Hooks/Context";
-import {
-  Checkbox,
-  Divider,
-  IconButton,
-  List,
-  ListItem,
-  ListItemText,
-  Paper,
-  TextField,
-} from "@mui/material";
-import { DeleteOutline, Edit } from "@mui/icons-material";
-import useToggle from "../Hooks/useToggle";
-import EditFrom from "./EditFrom";
+import { Divider, List, Paper } from "@mui/material";
+import React from "react";
+import TodoItem from "./TodoItem";
 
-function TodoList() {
-  const { state, dispatch } = useContext(stateContext);
-  const [isEditing, toggleIsEditing] = useToggle(false);
+function TodoList({ data, deleteTodo, editTodo, toggleTodo }) {
 
-  return (
-    <>
-      <Paper>
-        <List>
-          {isEditing ? (
-            <EditFrom />    
-          ) : (
-            state.map((el, index) => (
+    
+
+  if (data.length > 0) {
+    return (
+      <>
+        <Paper>
+          {data.map((el, index) => (
+            <List key={el.id}>
               <>
-                <ListItem key={el.id}>
-                  <Checkbox checked={el.completed} />
-                  <ListItemText
-                    style={{
-                      textDecorationLine: el.completed ? "line-through" : null,
-                    }}
-                  >
-                    {el.task}
-                  </ListItemText>
-                  <IconButton
-                    style={{ margin: "0 1rem" }}
-                    onClick={() => removeItem(el.id)}
-                  >
-                    <DeleteOutline />
-                  </IconButton>
-                  <IconButton onClick={toggleIsEditing}>
-                    <Edit />
-                  </IconButton>
-                </ListItem>
-                {index < state.length - 1 && <Divider />}
+                <TodoItem
+                  key={el.id}
+                  id={el.id}
+                  task={el.task}
+                  completed={el.completed}
+                  deleteTodo={deleteTodo}
+                  editTodo={editTodo}
+                  toggleTodo={toggleTodo}
+                />
+                {index < data.length - 1 && <Divider />}
               </>
-            ))
-          )}
-        </List>
-      </Paper>
-    </>
-  );
+            </List>
+          ))}
+        </Paper>
+      </>
+    );
+  } else {
+    <Paper>
+      <List>No Items in the List</List>
+    </Paper>;
+  }
 }
 
 export default TodoList;

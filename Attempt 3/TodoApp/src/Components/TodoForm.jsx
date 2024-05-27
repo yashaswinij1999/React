@@ -1,19 +1,16 @@
 import { Box, Paper, TextField } from "@mui/material";
 import React, { useContext, useRef, useState } from "react";
-import { stateContext } from "../Hooks/Context";
+
 import { v4 as uuidv4 } from "uuid";
 
-function TodoForm() {
+function TodoForm({ addTodo }) {
   const [inval, setInval] = useState("");
-  const { dispatch } = useContext(stateContext);
+
   const inRef = useRef(null);
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch({
-      type: "Add",
-      payload: { id: uuidv4(), task: inval, completed: false },
-    });
+    addTodo(inval);
     reset();
     inRef.current.focus();
   }
