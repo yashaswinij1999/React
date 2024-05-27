@@ -14,6 +14,12 @@ export const reducer = (state, action) => {
 
     case "delete":
       return state.filter((el) => action.payload.id !== el.id);
+
+    case "edit":
+      return state.map((el) =>
+        el.id === action.payload.id ? { ...el, task: action.payload.task } : el
+      );
+
     default:
       return state;
   }
