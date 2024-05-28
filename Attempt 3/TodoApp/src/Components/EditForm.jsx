@@ -2,19 +2,24 @@ import React, { useState } from "react";
 import useForm from "../Hooks/useForm";
 import { TextField } from "@mui/material";
 
-function EditForm({ id, task, completed }) {
-  const [state, setState] = useState(task);
+function EditForm({ id, task, completed, editTodo, toggleIsEditing }) {
+  const [inval, handleChange, reset] = useForm(task);
+
+  function handleSubmit() {
+    editTodo(id, inval);
+    toggleIsEditing();
+  }
 
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <TextField
           id="standard-basic"
           variant="standard"
           fullWidth
           label="add Todo"
-          value={state}
-          onChange={(e) => setState(e.target.value)}
+          value={inval}
+          onChange={handleChange}
         />
       </form>
     </>

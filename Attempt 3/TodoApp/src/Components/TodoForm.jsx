@@ -2,9 +2,10 @@ import { Box, Paper, TextField } from "@mui/material";
 import React, { useContext, useRef, useState } from "react";
 
 import { v4 as uuidv4 } from "uuid";
+import useForm from "../Hooks/useForm";
 
 function TodoForm({ addTodo }) {
-  const [inval, setInval] = useState("");
+  const [inval, handleChange, reset] = useForm("");
 
   const inRef = useRef(null);
 
@@ -13,10 +14,6 @@ function TodoForm({ addTodo }) {
     addTodo(inval);
     reset();
     inRef.current.focus();
-  }
-
-  function reset() {
-    setInval("");
   }
 
   return (
@@ -29,7 +26,7 @@ function TodoForm({ addTodo }) {
             fullWidth
             label="add Todo"
             value={inval}
-            onChange={(e) => setInval(e.target.value)}
+            onChange={handleChange}
             ref={inRef}
           />
         </form>

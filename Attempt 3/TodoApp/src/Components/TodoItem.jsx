@@ -9,9 +9,10 @@ import {
 
 import { useState } from "react";
 import EditForm from "./EditForm";
+import useToggle from "../Hooks/useToggle";
 
 function TodoItem({ id, task, completed, deleteTodo, editTodo, toggleTodo }) {
-  const [isEditing, setIsEditing] = useState(false);
+  const [isEditing, toggleIsEditing] = useToggle(false);
 
   return (
     <>
@@ -22,6 +23,7 @@ function TodoItem({ id, task, completed, deleteTodo, editTodo, toggleTodo }) {
             task={task}
             completed={completed}
             editTodo={editTodo}
+            toggleIsEditing={toggleIsEditing}
           />
         ) : (
           <>
@@ -31,7 +33,7 @@ function TodoItem({ id, task, completed, deleteTodo, editTodo, toggleTodo }) {
               <IconButton onClick={() => deleteTodo(id)}>
                 <DeleteForeverOutlined />
               </IconButton>
-              <IconButton onClick={() => setIsEditing(true)}>
+              <IconButton onClick={toggleIsEditing}>
                 <Edit />
               </IconButton>
             </ListItemSecondaryAction>

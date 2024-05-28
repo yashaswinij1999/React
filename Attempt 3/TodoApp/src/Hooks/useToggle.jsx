@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function useToggle({ initialValue }) {
+function useToggle(initialValue) {
   const [state, setState] = useState(initialValue);
 
   function handleState() {
