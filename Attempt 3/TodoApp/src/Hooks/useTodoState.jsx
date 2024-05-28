@@ -1,8 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 function useTodoState(initialData) {
-  const [data, setData] = useState(initialData);
+  const [data, setData] = useState(() => {
+    const data = localStorage.getItem("data");
+    return JSON.parse(data || initialData);
+  });
+
+  useEffect(() => {
+    localStorage.setItem("data", JSON.stringify(data));
+  });
 
   return {
     data,

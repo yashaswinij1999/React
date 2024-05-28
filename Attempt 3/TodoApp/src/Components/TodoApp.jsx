@@ -1,8 +1,6 @@
 import { AppBar, Grid, Paper, Toolbar, Typography } from "@mui/material";
-import React, { useState } from "react";
 import TodoList from "./TodoList";
 import TodoForm from "./TodoForm";
-import { v4 as uuidv4 } from "uuid";
 import useTodoState from "../Hooks/useTodoState";
 
 function TodoApp() {
