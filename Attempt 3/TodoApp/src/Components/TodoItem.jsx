@@ -28,7 +28,11 @@ function TodoItem({ id, task, completed, deleteTodo, editTodo, toggleTodo }) {
         ) : (
           <>
             <Checkbox checked={completed} onClick={() => toggleTodo(id)} />
-            <ListItemText>{task}</ListItemText>
+            <ListItemText
+              style={{ textDecorationLine: completed ? "line-through" : "" }}
+            >
+              {task}
+            </ListItemText>
             <ListItemSecondaryAction>
               <IconButton onClick={() => deleteTodo(id)}>
                 <DeleteForeverOutlined />
