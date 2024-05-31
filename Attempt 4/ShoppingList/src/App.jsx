@@ -7,6 +7,7 @@ import Home from "./Components/Home";
 import Contact from "./Components/Contact";
 import Navbar from "./Components/Navbar";
 import Cart from "./Components/Cart";
+import CheckOut from "./Components/CheckOut";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/checkout" element={<CheckOut />} />
       </Routes>
     </>
   );

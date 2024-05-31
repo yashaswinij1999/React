@@ -1,11 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import { shopContext } from "../Hooks/ShoppingContext";
 
 function Navbar() {
+  const { state } = useContext(shopContext);
+
   return (
     <>
-      <div className="w-full flex justify-between bg-slate-500 text-white p-4 text-xl">
+      <div className="w-full flex justify-between bg-slate-500 text-white p-4 text-xl sticky">
         <div>
           <Link to={"/"}>Home</Link>
         </div>
@@ -15,7 +18,9 @@ function Navbar() {
           <Link to={"/cart"}>
             <div className="p-1 flex relative">
               <FaShoppingCart />
-              <div className="bg-red-500 w-4 h-4 rounded-full absolute bottom-3 left-4"></div>
+              <div className="bg-red-500 w-4 h-4 rounded-full absolute bottom-3 left-4 text-sm flex justify-center items-center">
+                {state.length}
+              </div>
             </div>
           </Link>
         </div>
