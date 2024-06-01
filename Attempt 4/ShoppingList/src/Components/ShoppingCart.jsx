@@ -7,7 +7,7 @@ export default function ShoppingCart() {
 
   useEffect(() => {
     getData();
-  });
+  }, [data]);
 
   async function getData() {
     try {

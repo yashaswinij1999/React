@@ -8,6 +8,15 @@ export default function CartItem() {
   const { state, dispatch } = useContext(shopContext);
   const navigate = useNavigate();
 
+  function increment(id) {
+    dispatch({ type: "increment", payload: { id: id } });
+  }
+
+  function decrement(id) {
+    console.log(id);
+    dispatch({ type: "decrement", payload: { id: id } });
+  }
+
   return (
     <>
       <div className="max-h-screen">
@@ -21,11 +30,11 @@ export default function CartItem() {
             </div>
             <div className="w-1/3 h-32 flex items-center justify-center">
               <div className="p-2">
-                <FaPlus />
+                <FaPlus onClick={() => increment(el.id)} />
               </div>
               <div className="p-2">{el.quantity}</div>
               <div className="p-2">
-                <FaMinus />
+                <FaMinus onClick={() => decrement(el.id)} />
               </div>
             </div>
           </div>

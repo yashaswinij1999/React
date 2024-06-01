@@ -14,6 +14,20 @@ export const reducer = (state, action) => {
           quantity: 1,
         },
       ];
+    case "increment":
+      return state.map((el) =>
+        el.id === action.payload.id ? { ...el, quantity: el.quantity + 1 } : el
+      );
+
+    case "decrement":
+      return state
+        .map((el) =>
+          el.id === action.payload.id
+            ? { ...el, quantity: el.quantity - 1 }
+            : el
+        )
+        .filter((el) => el.quantity > 0);
+
     default:
       return state;
   }
