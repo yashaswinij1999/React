@@ -23,15 +23,15 @@ export default function CartItem() {
       <div className="max-h-screen">
         {state.map((el) => (
           <div
-            className=" flex justify-between items-center m-2  h-36 shadow-lg text-center"
+            className=" flex justify-between items-center m-2  h-36 shadow-xl text-center"
             key={el.id}
           >
             <div className="w-1/3 flex items-center justify-center ">
               <img className="w-28 h-32" src={el.image} />
             </div>
             <div className="w-1/2 h-18 p-2">
-              <p className="truncate">{el.title}</p>
-              <p>${el.price}</p>
+              <p className="truncate font-bold">{el.title}</p>
+              <p className="font-semibold">${el.price}</p>
             </div>
             <div className="w-1/3 h-32 flex items-center justify-center">
               <div className="p-2">

@@ -10,7 +10,9 @@ export default function TotalPrize() {
 
   return (
     <>
-      <div>Total Price : ${getTotal()}</div>
+      <div className="font-semibold text-xl text-green-400">
+        Total Price : ${getTotal()}
+      </div>
     </>
   );
 }

@@ -4,16 +4,28 @@ import { v4 as uuidv4 } from "uuid";
 export const reducer = (state, action) => {
   switch (action.type) {
     case "Add":
-      return [
-        ...state,
-        {
-          id: action.payload.id,
-          image: action.payload.image,
-          title: action.payload.title,
-          price: action.payload.price,
-          quantity: 1,
-        },
-      ];
+      const existingItem = state.find((el) =>
+        el.id === action.payload.id ? true : false
+      );
+      if (existingItem) {
+        return state.map((el) =>
+          el.id === action.payload.id
+            ? { ...el, quantity: el.quantity + 1 }
+            : el
+        );
+      } else {
+        return [
+          ...state,
+          {
+            id: action.payload.id,
+            image: action.payload.image,
+            title: action.payload.title,
+            price: action.payload.price,
+            quantity: 1,
+          },
+        ];
+      }
+
     case "increment":
       return state.map((el) =>
         el.id === action.payload.id ? { ...el, quantity: el.quantity + 1 } : el

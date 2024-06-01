@@ -8,7 +8,7 @@ function Navbar() {
 
   return (
     <>
-      <div className="w-full flex justify-between bg-slate-500 text-white p-4 text-xl sticky">
+      <div className="w-full flex justify-between bg-slate-500 text-white p-4 text-xl sticky top-0">
         <div>
           <Link to={"/"}>Home</Link>
         </div>
