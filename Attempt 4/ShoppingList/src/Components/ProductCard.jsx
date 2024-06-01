@@ -5,7 +5,6 @@ export default function ProductCard({ id, products }) {
   const { dispatch } = useContext(shopContext);
 
   function addToCart(id, image, title, price) {
-    console.log(id, image, title, price);
     dispatch({
       type: "Add",
       payload: { id: id, image: image, title: title, price: price },

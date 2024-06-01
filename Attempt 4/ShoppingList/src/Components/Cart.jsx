@@ -4,7 +4,7 @@ import { shopContext } from "../Hooks/ShoppingContext";
 import CartItem from "./CartItem";
 
 export default function Cart() {
-  const { state, dispatch } = useContext(shopContext);
+  const { state } = useContext(shopContext);
   return (
     <>
       {state.length === 0 ? (

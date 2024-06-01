@@ -3,6 +3,7 @@ import { shopContext } from "../Hooks/ShoppingContext";
 import { FaPlus } from "react-icons/fa6";
 import { FaMinus } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+import TotalPrize from "./TotalPrize";
 
 export default function CartItem() {
   const { state, dispatch } = useContext(shopContext);
@@ -21,12 +22,16 @@ export default function CartItem() {
     <>
       <div className="max-h-screen">
         {state.map((el) => (
-          <div className=" flex justify-between items-center m-2  h-36 shadow-lg text-center">
+          <div
+            className=" flex justify-between items-center m-2  h-36 shadow-lg text-center"
+            key={el.id}
+          >
             <div className="w-1/3 flex items-center justify-center ">
               <img className="w-28 h-32" src={el.image} />
             </div>
-            <div className="w-1/2 h-32 p-2 flex justify-center items-center">
-              <p>{el.title}</p>
+            <div className="w-1/2 h-18 p-2">
+              <p className="truncate">{el.title}</p>
+              <p>${el.price}</p>
             </div>
             <div className="w-1/3 h-32 flex items-center justify-center">
               <div className="p-2">
@@ -39,6 +44,9 @@ export default function CartItem() {
             </div>
           </div>
         ))}
+        <div className="flex justify-end p-6 m-4">
+          <TotalPrize />
+        </div>
         <div className="flex m-4 justify-center gap-2">
           <button
             className="p-2  bg-slate-600 text-white rounded-lg"
