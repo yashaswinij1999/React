@@ -1,5 +1,6 @@
 import "./App.css";
 import RentalPropertyList from "./Components/RentalPropertyList";
+import Toggler from "./Components/Toggler";
 
 const properties = [
   { id: 129031, name: "Desert Yurt", rating: 4.9, price: 150 },
@@ -13,7 +14,8 @@ const properties = [
 function App() {
   return (
     <>
-      <RentalPropertyList properties={properties} />
+      {/* <RentalPropertyList properties={properties} /> */}
+      <Toggler />
     </>
   );
 }
