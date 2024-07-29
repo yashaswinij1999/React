@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Form from "./Components/Form";
 import ShoppingList from "./Components/ShoppingList";
+import SignUpForm from "./Components/SignUpForm";
 
 const itemList = [{ id: 1, item: "carrot", qty: 12 }];
 
@@ -17,8 +18,9 @@ function App() {
 
   return (
     <>
-      <Form addData={addData} />
-      <ShoppingList list={list} />
+      {/* <Form addData={addData} />
+      <ShoppingList list={list} /> */}
+      <SignUpForm />
     </>
   );
 }
