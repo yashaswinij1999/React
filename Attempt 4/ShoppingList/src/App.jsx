@@ -1,24 +1,24 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
-import { Route, Routes } from "react-router-dom";
-import Home from "./Components/Home";
-import Contact from "./Components/Contact";
-import Navbar from "./Components/Navbar";
-import Cart from "./Components/Cart";
-import CheckOut from "./Components/CheckOut";
+import Form from "./Components/Form";
+import ShoppingList from "./Components/ShoppingList";
+
+const itemList = [{ id: 1, item: "carrot", qty: 12 }];
 
 function App() {
+  const [list, setList] = useState(itemList);
+
+  function addData(newData) {
+    setList((oldList) => [
+      ...oldList,
+      { item: newData.item, qty: newData.qty },
+    ]);
+  }
+
   return (
     <>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<CheckOut />} />
-      </Routes>
+      <Form addData={addData} />
+      <ShoppingList list={list} />
     </>
   );
 }
