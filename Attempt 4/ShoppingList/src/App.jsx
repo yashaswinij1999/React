@@ -3,6 +3,7 @@ import "./App.css";
 import Form from "./Components/Form";
 import ShoppingList from "./Components/ShoppingList";
 import SignUpForm from "./Components/SignUpForm";
+import GitHubForm from "./Components/GitHubForm";
 
 const itemList = [{ id: 1, item: "carrot", qty: 12 }];
 
@@ -20,7 +21,8 @@ function App() {
     <>
       {/* <Form addData={addData} />
       <ShoppingList list={list} /> */}
-      <SignUpForm />
+      {/* <SignUpForm /> */}
+      <GitHubForm />
     </>
   );
 }
